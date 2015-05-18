@@ -14,6 +14,11 @@ urlpatterns = [
         name='registration'
     ),
     url(
+        r'^registration/(?P<token>.+)/$',
+        views.RegistrationConfirmView.as_view(),
+        name='registration_confirm'
+    ),
+    url(
         r'^password-recovery/$',
         views.PasswordRecoveryView.as_view(),
         name='password_recovery'
