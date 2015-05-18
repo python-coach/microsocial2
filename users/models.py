@@ -32,9 +32,9 @@ class User(AbstractBaseUser, PermissionsMixin):
         (SEX_MALE, _(u'мужской')),
         (SEX_FEMALE, _(u'женский')),
     )
-    email = models.EmailField('email', unique=True)
-    first_name = models.CharField('first name', max_length=30)
-    last_name = models.CharField('last name', max_length=30, blank=True)
+    email = models.EmailField(_('email'), unique=True)
+    first_name = models.CharField(_('first name'), max_length=30)
+    last_name = models.CharField(_('last name'), max_length=30, blank=True)
     is_staff = models.BooleanField(_('staff status'), default=False,
                                    help_text=_('Designates whether the user can log into this admin '
                                                'site.'))

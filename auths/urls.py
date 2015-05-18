@@ -9,9 +9,9 @@ urlpatterns = [
         name='login'
     ),
     url(
-        r'^registraion/$',
+        r'^registration/$',
         views.RegistrationView.as_view(),
-        name='registraion'
+        name='registration'
     ),
     url(
         r'^password-recovery/$',

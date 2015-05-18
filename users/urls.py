@@ -1,10 +1,11 @@
 from django.conf.urls import url
-from users.views import UserProfileView
+from users import views
+
 
 urlpatterns = [
     url(
         r'^profile/(?P<user_id>\d+)/$',
-        UserProfileView.as_view(),
+        views.UserProfileView.as_view(),
         name='user_profile'
     ),
 ]

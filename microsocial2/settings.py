@@ -29,7 +29,6 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-# Application definition
 
 SITE_ID = 1
 
