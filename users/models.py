@@ -1,9 +1,12 @@
 # coding=utf-8
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
+from django.contrib.sites.models import Site
 from django.core.mail import send_mail
+from django.core.signing import Signer
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils import timezone
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext, ugettext_lazy as _
 
 
 class UserManager(BaseUserManager):
@@ -42,6 +45,7 @@ class User(AbstractBaseUser, PermissionsMixin):
                                     help_text=_('Designates whether this user should be treated as '
                                                 'active. Unselect this instead of deleting accounts.'))
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
+    confirmed_registration = models.BooleanField(_('confirmed registration'), default=True)
     sex = models.SmallIntegerField(_(u'пол'), choices=SEX_CHOICES, default=SEX_NONE)
     birth_date = models.DateField(_(u'дата рождения'), null=True, blank=True)
     city = models.CharField(_(u'город'), max_length=50, blank=True)
@@ -63,3 +67,13 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def email_user(self, subject, message, from_email=None, **kwargs):
         send_mail(subject, message, from_email, [self.email], **kwargs)
+
+    def send_registration_email(self):
+        url = 'http:{}{}'.format(
+            Site.objects.get_current().domain,
+            reverse('registration_confirm', kwargs={'token': Signer(salt='registration-confirm').sign(self.pk)})
+        )
+        self.email_user(
+            ugettext(u'Подтвердите регистрацию на microsocial'),
+            ugettext(u'Для подтверждения перейдите по ссылке: {}').format(url)
+        )
