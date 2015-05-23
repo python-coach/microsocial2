@@ -31,4 +31,9 @@ urlpatterns = [
         views.PasswordRecoveryView.as_view(),
         name='password_recovery'
     ),
+    url(
+        r'^password-recovery/(?P<token>.+)/$',
+        views.PasswordRecoveryConfirmView.as_view(),
+        name='password_recovery_confirm'
+    ),
 ]
