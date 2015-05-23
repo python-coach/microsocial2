@@ -19,5 +19,11 @@
                onclick="$('#set_lang_code').val('{{ language.code }}').closest('form').submit(); return false;">
                 {{ language.code }}</a>
         {% endfor %}
+
+        {% if user.is_authenticated %}
+            <p style="margin-top: 10px;">
+                <a href="{% url 'logout' %}">{% trans 'выход'|capfirst %}</a>
+            </p>
+        {% endif %}
     </div>
 </div>

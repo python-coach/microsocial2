@@ -1,18 +1,21 @@
 # coding=utf-8
 from django.conf import settings
 from django.contrib import messages
+from django.contrib.auth.views import login
 from django.core.signing import Signer, BadSignature
 from django.core.urlresolvers import reverse_lazy
 from django.http import Http404
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 from django.views.generic import TemplateView, RedirectView
-from auths.forms import RegistrationForm
+from auths.forms import RegistrationForm, LoginForm
 from users.models import User
 from django.utils.translation import ugettext as _
 
 
 def login_view(request):
-    return render(request, 'auths/login.html')
+    if request.user.is_authenticated():
+        return redirect('main')
+    return login(request, 'auths/login.html', authentication_form=LoginForm)
 
 
 class RegistrationView(TemplateView):

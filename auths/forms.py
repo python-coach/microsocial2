@@ -1,5 +1,6 @@
 # coding=utf-8
 from django import forms
+from django.contrib.auth.forms import AuthenticationForm
 from django.utils.translation import ugettext, ugettext_lazy as _
 from microsocial2.forms import BootstrapFormMixin
 from users.models import User
@@ -36,3 +37,15 @@ class RegistrationForm(forms.ModelForm, BootstrapFormMixin):
         if commit:
             user.save()
         return user
+
+
+class LoginForm(AuthenticationForm, BootstrapFormMixin):
+    def __init__(self, *args, **kwargs):
+        super(LoginForm, self).__init__(*args, **kwargs)
+        BootstrapFormMixin.__init__(self)
+
+    def clean(self):
+        super(LoginForm, self).clean()
+        if self.errors or (self.user_cache and not self.user_cache.confirmed_registration):
+            self._errors.clear()
+            raise forms.ValidationError(ugettext(u'Неправильнй email или пароль.'))

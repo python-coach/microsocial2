@@ -1,4 +1,6 @@
+from django.conf import settings
 from django.conf.urls import url
+from django.contrib.auth.views import logout
 from auths import views
 
 
@@ -7,6 +9,12 @@ urlpatterns = [
         r'^login/$',
         views.login_view,
         name='login'
+    ),
+    url(
+        r'^logout/$',
+        logout,
+        {'next_page': settings.LOGIN_URL},
+        name='logout'
     ),
     url(
         r'^registration/$',
