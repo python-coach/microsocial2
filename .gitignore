@@ -61,3 +61,7 @@ target/
 
 # DB
 db.sqlite3
+
+# MEDIA
+media/
+!media/.gitkeep

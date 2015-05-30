@@ -8,4 +8,9 @@ urlpatterns = [
         views.UserProfileView.as_view(),
         name='user_profile'
     ),
+    url(
+        r'^settings/$',
+        views.UserSettingsView.as_view(),
+        name='user_settings'
+    ),
 ]

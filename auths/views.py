@@ -119,5 +119,5 @@ class PasswordRecoveryConfirmView(TemplateView):
             self.form.save()
             self.form.user.backend = 'django.contrib.auth.backends.ModelBackend'
             auth_login(request, self.form.user)
-            return redirect('user_profile', user_id=self.form.user.pk)  # todo на страницу редактирования профиля
+            return redirect('user_settings')
         return self.get(request, *args, **kwargs)
