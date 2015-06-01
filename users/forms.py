@@ -4,7 +4,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.core import validators
 from django.utils.translation import ugettext
 from microsocial2.forms import BootstrapFormMixin
-from users.models import User
+from users.models import User, UserWallPost
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -56,3 +56,19 @@ class UserEmailChangeForm(forms.Form, BootstrapFormMixin):
         if commit:
             self.user.save()
         return self.user
+
+
+class UserWallPostForm(forms.ModelForm, BootstrapFormMixin):
+    class Meta:
+        model = UserWallPost
+        fields = ('content',)
+        widgets = {
+            'content': forms.Textarea(attrs={'rows': 4, 'placeholder': _(u'напишите на стене...')}),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(UserWallPostForm, self).__init__(*args, **kwargs)
+        BootstrapFormMixin.__init__(self)
+
+    def clean_content(self):
+        return self.cleaned_data['content'].strip()
