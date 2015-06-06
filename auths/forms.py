@@ -2,9 +2,9 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, SetPasswordForm
 from django.core import validators
-from django.utils.translation import ugettext, ugettext_lazy as _
 from microsocial2.forms import BootstrapFormMixin
 from users.models import User
+from django.utils.translation import ugettext, ugettext_lazy as _
 
 
 class RegistrationForm(forms.ModelForm, BootstrapFormMixin):
@@ -46,10 +46,14 @@ class LoginForm(AuthenticationForm, BootstrapFormMixin):
         BootstrapFormMixin.__init__(self)
 
     def clean(self):
-        super(LoginForm, self).clean()
-        if self.errors or (self.user_cache and not self.user_cache.confirmed_registration):
+        has_error = False
+        try:
+            super(LoginForm, self).clean()
+        except forms.ValidationError:
+            has_error = True
+        if has_error or self.errors or (self.user_cache and not self.user_cache.confirmed_registration):
             self._errors.clear()
-            raise forms.ValidationError(ugettext(u'Неправильнй email или пароль.'))
+            raise forms.ValidationError(ugettext(u'Неправильный email или пароль.'))
 
 
 class PasswordRecoveryForm(forms.Form, BootstrapFormMixin):
@@ -65,7 +69,7 @@ class PasswordRecoveryForm(forms.Form, BootstrapFormMixin):
         try:
             self._user = User.objects.get(email=email)
         except User.DoesNotExist:
-            self.add_error('email', ugettext(u'Пользователя с таким email не существует.'))
+            raise forms.ValidationError(_(u'Пользователя с таким email не существует.'))
         return email
 
     def get_user(self):

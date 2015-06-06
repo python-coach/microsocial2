@@ -88,11 +88,11 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">
+                    <label class="control-label col-sm-3">
                         {% trans 'текущий email'|capfirst %}:
                     </label>
                     <div class="col-sm-9">
-                        <p class="form-control-static">{{ user.email }}</p>
+                        <p class="form-control-static">{{ email_form.user.email }}</p>
                     </div>
                 </div>
                 {% for field in email_form %}

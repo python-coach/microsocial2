@@ -96,7 +96,7 @@ class PasswordRecoveryConfirmView(TemplateView):
         if request.user.is_authenticated():
             return redirect('main')
         try:
-            data = TimestampSigner(salt='password-recoverty-confirm').unsign(kwargs['token'], max_age=(48 * 3600))
+            data = TimestampSigner(salt='password-recovery-confirm').unsign(kwargs['token'], max_age=(48 * 3600))
             user_id, last_login_hash = data.split(':')
         except (BadSignature, ValueError):
             raise Http404

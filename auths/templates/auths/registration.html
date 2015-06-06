@@ -19,7 +19,6 @@
                 </p>
             {% else %}
                 <h1 class="text-center">{% trans 'регистрация'|capfirst %}</h1>
-
                 <form class="form-horizontal" method="post">
                     {% csrf_token %}
                     {% for field in form %}
@@ -40,7 +39,6 @@
                         </div>
                     </div>
                 </form>
-
                 <div class="row" style="margin-top: 40px;">
                     <div class="col-sm-offset-4 col-sm-8">
                         <a href="{% url 'login' %}">{% trans 'авторизация'|capfirst %}</a>

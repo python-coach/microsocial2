@@ -34,8 +34,8 @@ def get_avatar_fn(instance, filename):
     return 'avatars/{sub_dir}/{id}_{rand}{ext}'.format(
         sub_dir=id_str.zfill(2)[-2:],
         id=id_str,
-        rand=get_random_string(8, '0123456789abcdefghijklmnopqrstuvwxyz'),
-        ext=os.path.splitext(filename)[1]
+        rand=get_random_string(8, 'abcdefghijklmnopqrstuvwxyz0123456789'),
+        ext=os.path.splitext(filename)[1],
     )
 
 
@@ -79,11 +79,11 @@ class User(AbstractBaseUser, PermissionsMixin):
     def get_short_name(self):
         return self.first_name
 
-    def get_last_login_hash(self):
-        return hashlib.md5(self.last_login.strftime('%Y-%m-%d-%H-%M-%S-%f')).hexdigest()[:16]
-
     def email_user(self, subject, message, from_email=None, **kwargs):
         send_mail(subject, message, from_email, [self.email], **kwargs)
+
+    def get_last_login_hash(self):
+        return hashlib.md5(self.last_login.strftime('%Y-%m-%d-%H-%M-%S-%f')).hexdigest()[:8]
 
     def send_registration_email(self):
         url = 'http://{}{}'.format(
@@ -91,19 +91,19 @@ class User(AbstractBaseUser, PermissionsMixin):
             reverse('registration_confirm', kwargs={'token': Signer(salt='registration-confirm').sign(self.pk)})
         )
         self.email_user(
-            ugettext(u'Подтвердите регистрацию на microsocial'),
+            ugettext(u'Подтвердите регистрацию на Microsocial'),
             ugettext(u'Для подтверждения перейдите по ссылке: {}').format(url)
         )
 
     def send_password_recovery_email(self):
         data = '{}:{}'.format(self.pk, self.get_last_login_hash())
-        token = TimestampSigner(salt='password-recoverty-confirm').sign(data)
+        token = TimestampSigner(salt='password-recovery-confirm').sign(data)
         url = 'http://{}{}'.format(
             Site.objects.get_current().domain,
             reverse('password_recovery_confirm', kwargs={'token': token})
         )
         self.email_user(
-            ugettext(u'Подтвердите восстановление пароля на microsocial'),
+            ugettext(u'Подтвердите восстановление пароля на Microsocial'),
             ugettext(u'Для подтверждения перейдите по ссылке: {}').format(url)
         )
 

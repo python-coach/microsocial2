@@ -2,10 +2,9 @@
 from django import forms
 from django.contrib.auth.forms import PasswordChangeForm
 from django.core import validators
-from django.utils.translation import ugettext
+from django.utils.translation import ugettext, ugettext_lazy as _
 from microsocial2.forms import BootstrapFormMixin
 from users.models import User, UserWallPost
-from django.utils.translation import ugettext_lazy as _
 
 
 class UserProfileForm(forms.ModelForm, BootstrapFormMixin):
