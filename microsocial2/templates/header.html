@@ -4,8 +4,20 @@
         <a href="{% url 'main' %}"><img class="img-responsive" src="{% static 'microsocial2/img/logo.png' %}"></a>
     </div>
     <div class="col-xs-6">
-
-
+        {% if user.is_authenticated %}
+            <p style="margin-top: 32px; font-size: 16px;">
+                <a href="#" style="margin-right: 10px;">
+                    {% trans 'новости'|capfirst %}</a>
+                <a href="{% url 'user_profile' user.pk %}" style="margin-right: 10px;">
+                    {% trans 'мой профиль'|capfirst %}</a>
+                <a href="{% url 'user_friends' %}" style="margin-right: 10px;">
+                    {% trans 'друзья'|capfirst %}</a>
+                <a href="#" style="margin-right: 10px;">
+                    {% trans 'сообщения'|capfirst %}</a>
+                <a href="#" style="margin-right: 10px;">
+                    {% trans 'поиск людей'|capfirst %}</a>
+            </p>
+        {% endif %}
     </div>
     <div class="col-xs-2 text-right">
         <form action="{% url 'set_language' %}" method="post">

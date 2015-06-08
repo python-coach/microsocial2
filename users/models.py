@@ -179,9 +179,9 @@ class FriendInviteManager(models.Manager):
         from_user_id, to_user_id = get_ids_from_users(from_user, to_user)
         if not self.is_pending(from_user_id, to_user_id):
             raise ValueError(_(u'Заявка не существует.'))
-        User.friendship.add(from_user_id, to_user_id)
+        return User.friendship.add(from_user_id, to_user_id)
 
-    def refect(self, from_user, to_user):
+    def reject(self, from_user, to_user):
         """
         Отклоняет заявку в друзья.
         """

@@ -13,4 +13,24 @@ urlpatterns = [
         views.UserSettingsView.as_view(),
         name='user_settings'
     ),
+    url(
+        r'^friends/$',
+        views.UserFriendsView.as_view(),
+        name='user_friends'
+    ),
+    url(
+        r'^friends/incoming/$',
+        views.UserIncomingView.as_view(),
+        name='user_incoming'
+    ),
+    url(
+        r'^friends/outcoming/$',
+        views.UserOutcomingView.as_view(),
+        name='user_outcoming'
+    ),
+    url(
+        r'^api/friendship/$',
+        views.FriendshipAPIView.as_view(),
+        name='user_friendship_api'
+    )
 ]

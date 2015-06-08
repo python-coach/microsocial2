@@ -23,3 +23,11 @@ def show_form_errors(form, block_class=None):
 @register.inclusion_tag('microsocial/tags/messages.html', takes_context=True)
 def show_messages(context, show=True):
     return {'messages': (context.get('messages') if show else None)}
+
+
+@register.inclusion_tag('microsocial/tags/paginator.html')
+def show_paginator(page, page_arg_name='page'):
+    return {
+        'page': page,
+        'page_arg_name': page_arg_name,
+    }
