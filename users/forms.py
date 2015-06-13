@@ -71,3 +71,28 @@ class UserWallPostForm(forms.ModelForm, BootstrapFormMixin):
 
     def clean_content(self):
         return self.cleaned_data['content'].strip()
+
+
+class SearchForm(forms.Form, BootstrapFormMixin):
+    name = forms.CharField(label=_(u'имя, фамилия'), required=False)
+    sex = forms.TypedChoiceField(label=_(u'пол'), required=False,
+                                 choices=((0, _(u'все')),) + User.SEX_CHOICES[1:],
+                                 coerce=lambda val: int(val))
+    by_from = forms.IntegerField(label=_(u'год рождения от'), required=False,
+                                 widget=forms.NumberInput(attrs={'placeholder': _(u'от')}))
+    by_to = forms.IntegerField(label=_(u'год рождения до'), required=False,
+                               widget=forms.NumberInput(attrs={'placeholder': _(u'до')}))
+    city = forms.CharField(label=_(u'город'), required=False)
+    job = forms.CharField(label=_(u'место работы'), required=False)
+    about_me = forms.CharField(label=_(u'о себе'), required=False)
+    interests = forms.CharField(label=_(u'интересы'), required=False)
+
+    def __init__(self, *args, **kwargs):
+        super(SearchForm, self).__init__(*args, **kwargs)
+        BootstrapFormMixin.__init__(self)
+
+    def get_values_list(self, field_name):
+        val = self.cleaned_data.get(field_name)
+        if isinstance(val, basestring):
+            val = val.strip().split()
+        return val or []

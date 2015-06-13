@@ -14,7 +14,7 @@
                     {% trans 'друзья'|capfirst %}</a>
                 <a href="#" style="margin-right: 10px;">
                     {% trans 'сообщения'|capfirst %}</a>
-                <a href="#" style="margin-right: 10px;">
+                <a href="{% url 'user_search' %}" style="margin-right: 10px;">
                     {% trans 'поиск людей'|capfirst %}</a>
             </p>
         {% endif %}

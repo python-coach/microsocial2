@@ -1,14 +1,16 @@
 # coding=utf-8
+import datetime
 from django.contrib import messages
 from django.contrib.auth import BACKEND_SESSION_KEY, login
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.db.models import Q
 from django.http import Http404
 from django.shortcuts import redirect, get_object_or_404
 from django.utils.decorators import method_decorator
 from django.views.decorators.http import require_POST
 from django.views.generic import TemplateView, View
-from users.forms import UserProfileForm, UserPasswordChangeForm, UserEmailChangeForm, UserWallPostForm
+from users.forms import UserProfileForm, UserPasswordChangeForm, UserEmailChangeForm, UserWallPostForm, SearchForm
 from django.utils.translation import ugettext as _
 from users.models import User, FriendInvite
 
@@ -16,6 +18,7 @@ from users.models import User, FriendInvite
 class UserProfileView(TemplateView):
     template_name = 'users/profile.html'
 
+    @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated() and request.user.pk == int(kwargs['user_id']):
             self.user = request.user
@@ -226,3 +229,59 @@ class FriendshipAPIView(View):
             FriendInvite.objects.filter(from_user=self.request.user, to_user=user).delete()
             messages.success(self.request, _(u'Заявка успешно отменена.'))
         return 'user_incoming'
+
+
+class SearchView(TemplateView):
+    template_name = 'users/search.html'
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        self.form = SearchForm(request.GET or None)
+        return super(SearchView, self).dispatch(request, *args, **kwargs)
+
+    def get_filtered_qs(self, qs):
+        self.form.is_valid()
+        if not hasattr(self.form, 'cleaned_data'):
+            return qs
+        if self.form.cleaned_data.get('name'):
+            query = None
+            for val in self.form.get_values_list('name'):
+                q = Q(first_name__icontains=val) | Q(last_name__icontains=val)
+                if query is None:
+                    query = q
+                else:
+                    query |= q
+            if query:
+                qs = qs.filter(query)
+        if self.form.cleaned_data.get('sex'):
+            qs = qs.filter(sex=self.form.cleaned_data['sex'])
+        if self.form.cleaned_data.get('by_from'):
+            qs = qs.filter(birth_date__gte=datetime.datetime(self.form.cleaned_data['by_from'], 1, 1))
+        if self.form.cleaned_data.get('by_to'):
+            qs = qs.filter(birth_date__lt=datetime.datetime(self.form.cleaned_data['by_to'] + 1, 1, 1))
+        for field_name in ('city', 'job', 'about_me', 'interests'):
+            query = None
+            for val in self.form.get_values_list(field_name):
+                q = Q(**{'%s__icontains' % field_name: val})
+                if query is None:
+                    query = q
+                else:
+                    query |= q
+            if query:
+                qs = qs.filter(query)
+        return qs
+
+    def get_context_data(self, **kwargs):
+        context = super(SearchView, self).get_context_data(**kwargs)
+        context['form'] = self.form
+        qs = self.get_filtered_qs(User.objects.all())
+        paginator = Paginator(qs, 20)
+        page = self.request.GET.get('page')
+        try:
+            items = paginator.page(page)
+        except PageNotAnInteger:
+            items = paginator.page(1)
+        except EmptyPage:
+            items = paginator.page(paginator.num_pages)
+        context['items'] = items
+        return context
