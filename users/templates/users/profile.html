@@ -32,6 +32,11 @@
                                    value="{% trans 'добавить в друзья'|capfirst %}">
                         </form>
                     {% endif %}
+                    <div style="margin-top: 10px;">
+                        <a href="{% url 'messages' profile_user.pk %}">
+                            {% trans 'написать сообщение'|capfirst %}
+                        </a>
+                    </div>
                 {% endif %}
             </div>
         </div>

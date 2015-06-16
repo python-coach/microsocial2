@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'microsocial2',
     'users',
     'auths',
+    'dialogs',
 )
 
 MIDDLEWARE_CLASSES = (

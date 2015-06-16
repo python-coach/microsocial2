@@ -12,7 +12,7 @@
                     {% trans 'мой профиль'|capfirst %}</a>
                 <a href="{% url 'user_friends' %}" style="margin-right: 10px;">
                     {% trans 'друзья'|capfirst %}</a>
-                <a href="#" style="margin-right: 10px;">
+                <a href="{% url 'messages' %}" style="margin-right: 10px;">
                     {% trans 'сообщения'|capfirst %}</a>
                 <a href="{% url 'user_search' %}" style="margin-right: 10px;">
                     {% trans 'поиск людей'|capfirst %}</a>
