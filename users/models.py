@@ -9,6 +9,7 @@ from django.core.signing import Signer, TimestampSigner
 from django.core.urlresolvers import reverse
 from django.db import models, transaction
 from django.db.models import Q
+from django.dispatch import Signal
 from django.utils import timezone
 from django.utils.crypto import get_random_string
 from django.utils.translation import ugettext, ugettext_lazy as _
@@ -54,6 +55,7 @@ class UserFriendShipManager(models.Manager):
             FriendInvite.objects.filter(
                 Q(from_user_id=user1_id, to_user_id=user2_id) | Q(from_user_id=user2_id, to_user_id=user1_id)
             ).delete()
+            make_friends.send(self.model, user1_id=user1_id, user2_id=user2_id)
             return True
 
     def delete(self, user1, user2):
@@ -63,6 +65,7 @@ class UserFriendShipManager(models.Manager):
             through_model.objects.filter(
                 Q(from_user_id=user1_id, to_user_id=user2_id) | Q(from_user_id=user2_id, to_user_id=user1_id)
             ).delete()
+            break_friends.send(self.model, user1_id=user1_id, user2_id=user2_id)
             return True
 
 
@@ -212,3 +215,7 @@ class UserWallPost(models.Model):
 
     class Meta:
         ordering = ('-created',)
+
+
+make_friends = Signal(providing_args=['user1_id', 'user2_id'])
+break_friends = Signal(providing_args=['user1_id', 'user2_id'])

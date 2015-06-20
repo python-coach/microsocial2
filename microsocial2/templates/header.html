@@ -6,7 +6,7 @@
     <div class="col-xs-6">
         {% if user.is_authenticated %}
             <p style="margin-top: 32px; font-size: 16px;">
-                <a href="#" style="margin-right: 10px;">
+                <a href="{% url 'news' %}" style="margin-right: 10px;">
                     {% trans 'новости'|capfirst %}</a>
                 <a href="{% url 'user_profile' user.pk %}" style="margin-right: 10px;">
                     {% trans 'мой профиль'|capfirst %}</a>

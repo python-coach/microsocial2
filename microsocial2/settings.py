@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'users',
     'auths',
     'dialogs',
+    'news',
 )
 
 MIDDLEWARE_CLASSES = (

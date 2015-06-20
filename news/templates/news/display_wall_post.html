@@ -1,0 +1,28 @@
+{% extends 'news/display_base.html' %}
+
+{% load i18n %}
+
+
+{% block between %}
+    <b>
+        {% if item.user == item.target %}
+            {% trans 'написал на своей стене' %}
+        {% else %}
+            {% trans 'написал на стене' %}
+        {% endif %}
+    </b>
+{% endblock %}
+
+
+{% block target %}
+    {% if item.user != item.target %}
+        {{ block.super }}
+    {% endif %}
+{% endblock %}
+
+
+{% block content %}
+    <div style="margin-top: 10px;">
+        {{ item.news_object.content|linebreaksbr }}
+    </div>
+{% endblock %}
