@@ -1,0 +1,496 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-06-30 14:39+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: .\auths\forms.py:11
+msgid "пароль"
+msgstr ""
+
+#: .\auths\forms.py:12
+msgid "повтор пароля"
+msgstr ""
+
+#: .\auths\forms.py:26
+msgid "Пароли не совпадают."
+msgstr ""
+
+#: .\auths\forms.py:31 .\users\forms.py:44
+msgid "Пользователь с таким email уже существует."
+msgstr ""
+
+#: .\auths\forms.py:56
+msgid "Неправильный email или пароль."
+msgstr ""
+
+#: .\auths\forms.py:60 .\users\models.py:90
+msgid "email"
+msgstr ""
+
+#: .\auths\forms.py:72
+msgid "Пользователя с таким email не существует."
+msgstr ""
+
+#: .\auths\templates\auths\login.html:9
+#: .\auths\templates\auths\password_recovery.html:39
+#: .\auths\templates\auths\registration.html:44
+msgid "авторизация"
+msgstr ""
+
+#: .\auths\templates\auths\login.html:26
+msgid "войти"
+msgstr ""
+
+#: .\auths\templates\auths\login.html:32
+msgid "забыли пароль?"
+msgstr ""
+
+#: .\auths\templates\auths\login.html:34
+#: .\auths\templates\auths\registration.html:21
+msgid "регистрация"
+msgstr ""
+
+#: .\auths\templates\auths\password_recovery.html:9
+msgid "восстановление пароля"
+msgstr ""
+
+#: .\auths\templates\auths\password_recovery.html:12
+#, python-format
+msgid ""
+"Подтвердите восстановление пароля перейдя по ссылке, которая отправлена на "
+"Ваш email %(e)s."
+msgstr ""
+
+#: .\auths\templates\auths\password_recovery.html:33
+msgid "восстановить пароль"
+msgstr ""
+
+#: .\auths\templates\auths\password_recovery_form.html:9
+msgid "новый пароль"
+msgstr ""
+
+#: .\auths\templates\auths\password_recovery_form.html:26
+#: .\users\templates\users\settings.html:43
+msgid "сохранить"
+msgstr ""
+
+#: .\auths\templates\auths\registration.html:11
+#, python-format
+msgid "Спасибо за регистрацию, %(u)s!"
+msgstr ""
+
+#: .\auths\templates\auths\registration.html:16
+#, python-format
+msgid ""
+"Подтвердите регистрацию перейдя по ссылке, которая отправлена на Ваш email "
+"%(e)s."
+msgstr ""
+
+#: .\auths\templates\auths\registration.html:38
+msgid "зарегистрироваться"
+msgstr ""
+
+#: .\auths\views.py:63
+msgid "Ваша регистрация успешно подтверждена. Можете войти."
+msgstr ""
+
+#: .\dialogs\forms.py:13
+msgid "введите сообщение"
+msgstr ""
+
+#: .\dialogs\templates\dialogs\dialog.html:9
+#: .\microsocial\templates\header.html:16
+msgid "сообщения"
+msgstr ""
+
+#: .\dialogs\templates\dialogs\dialog.html:25
+msgid "диалог с"
+msgstr ""
+
+#: .\dialogs\templates\dialogs\dialog.html:38
+msgid "отправить"
+msgstr ""
+
+#: .\microsocial\settings.py:96
+msgid "English"
+msgstr ""
+
+#: .\microsocial\settings.py:97
+msgid "Русский"
+msgstr ""
+
+#: .\microsocial\settings.py:98
+msgid "Українська"
+msgstr ""
+
+#: .\microsocial\templates\header.html:10 .\news\templates\news\news.html:7
+msgid "новости"
+msgstr ""
+
+#: .\microsocial\templates\header.html:12
+msgid "мой профиль"
+msgstr ""
+
+#: .\microsocial\templates\header.html:14 .\users\models.py:108
+#: .\users\templates\users\friends_base.html:11
+#: .\users\templates\users\friends_friends.html:7
+msgid "друзья"
+msgstr ""
+
+#: .\microsocial\templates\header.html:18
+msgid "поиск людей"
+msgstr ""
+
+#: .\microsocial\templates\header.html:37
+msgid "выход"
+msgstr ""
+
+#: .\microsocial\templates\microsocial\tags\paginator.html:7
+msgid "новые"
+msgstr ""
+
+#: .\microsocial\templates\microsocial\tags\paginator.html:14
+msgid "старые"
+msgstr ""
+
+#: .\news\models.py:24
+msgid "сообщение на стене"
+msgstr ""
+
+#: .\news\models.py:25
+msgid "создание дружественной связи"
+msgstr ""
+
+#: .\news\models.py:26
+msgid "разрыв дружественной связи"
+msgstr ""
+
+#: .\news\templates\news\display_break_friends.html:7
+#: .\news\templates\news\display_make_friends.html:7
+msgid "и"
+msgstr ""
+
+#: .\news\templates\news\display_break_friends.html:12
+msgid "разорвали дружбу"
+msgstr ""
+
+#: .\news\templates\news\display_make_friends.html:12
+msgid "подружились"
+msgstr ""
+
+#: .\news\templates\news\display_wall_post.html:9
+msgid "написал на своей стене"
+msgstr ""
+
+#: .\news\templates\news\display_wall_post.html:11
+msgid "написал на стене"
+msgstr ""
+
+#: .\users\forms.py:18
+msgid "Введите дату в формате ГГГГ-ММ-ДД"
+msgstr ""
+
+#: .\users\forms.py:33
+msgid "новый email"
+msgstr ""
+
+#: .\users\forms.py:34
+msgid "текущий пароль"
+msgstr ""
+
+#: .\users\forms.py:50
+msgid "Введен неправильный пароль."
+msgstr ""
+
+#: .\users\forms.py:65
+msgid "напишите на стене..."
+msgstr ""
+
+#: .\users\forms.py:77
+msgid "имя, фамилия"
+msgstr ""
+
+#: .\users\forms.py:78 .\users\models.py:102
+#: .\users\templates\users\profile.html:49
+msgid "пол"
+msgstr ""
+
+#: .\users\forms.py:79
+msgid "все"
+msgstr ""
+
+#: .\users\forms.py:81
+msgid "год рождения от"
+msgstr ""
+
+#: .\users\forms.py:82
+msgid "от"
+msgstr ""
+
+#: .\users\forms.py:83
+msgid "год рождения до"
+msgstr ""
+
+#: .\users\forms.py:84
+msgid "до"
+msgstr ""
+
+#: .\users\forms.py:85 .\users\models.py:104
+#: .\users\templates\users\profile.html:61
+msgid "город"
+msgstr ""
+
+#: .\users\forms.py:86 .\users\models.py:105
+#: .\users\templates\users\profile.html:67
+msgid "место работы"
+msgstr ""
+
+#: .\users\forms.py:87 .\users\models.py:106
+#: .\users\templates\users\profile.html:73
+msgid "о себе"
+msgstr ""
+
+#: .\users\forms.py:88 .\users\models.py:107
+#: .\users\templates\users\profile.html:79
+msgid "интересы"
+msgstr ""
+
+#: .\users\models.py:47 .\users\models.py:164
+msgid "Нельзя самого себя добавить в друзья."
+msgstr ""
+
+#: .\users\models.py:86
+msgid "------"
+msgstr ""
+
+#: .\users\models.py:87
+msgid "мужской"
+msgstr ""
+
+#: .\users\models.py:88
+msgid "женский"
+msgstr ""
+
+#: .\users\models.py:91
+msgid "first name"
+msgstr "имя"
+
+#: .\users\models.py:92
+msgid "last name"
+msgstr "фамилия"
+
+#: .\users\models.py:93
+msgid "staff status"
+msgstr "статус персонала"
+
+#: .\users\models.py:94
+msgid "Designates whether the user can log into this admin site."
+msgstr "Определяет, может ли пользователь войти в этот сайт администрирования."
+
+#: .\users\models.py:96
+msgid "active"
+msgstr "активный"
+
+#: .\users\models.py:97
+msgid ""
+"Designates whether this user should be treated as active. Unselect this "
+"instead of deleting accounts."
+msgstr ""
+"Отметьте, если пользователь должен считаться активным. Уберите эту отметку "
+"вместо удаления аккаунта."
+
+#: .\users\models.py:99
+msgid "date joined"
+msgstr "дата регистрации"
+
+#: .\users\models.py:100
+msgid "confirmed registration"
+msgstr "подтвержденная регистрация"
+
+#: .\users\models.py:101
+msgid "аватар"
+msgstr ""
+
+#: .\users\models.py:103 .\users\templates\users\profile.html:55
+msgid "дата рождения"
+msgstr ""
+
+#: .\users\models.py:135
+msgid "Подтвердите регистрацию на Microsocial"
+msgstr ""
+
+#: .\users\models.py:136 .\users\models.py:148
+msgid "Для подтверждения перейдите по ссылке: {}"
+msgstr ""
+
+#: .\users\models.py:147
+msgid "Подтвердите восстановление пароля на Microsocial"
+msgstr ""
+
+#: .\users\models.py:166
+msgid "Вы уже друзья."
+msgstr ""
+
+#: .\users\models.py:168
+msgid "Заявка уже создана и ожидает рассмотрения."
+msgstr ""
+
+#: .\users\models.py:178
+msgid "Заявка не существует."
+msgstr ""
+
+#: .\users\models.py:197
+msgid "владелец стены"
+msgstr ""
+
+#: .\users\models.py:198
+msgid "автор"
+msgstr ""
+
+#: .\users\models.py:199
+msgid "текст"
+msgstr ""
+
+#: .\users\models.py:200
+msgid "дата"
+msgstr ""
+
+#: .\users\templates\users\friends_base.html:14
+#: .\users\templates\users\friends_incoming.html:7
+msgid "входящие заявки"
+msgstr ""
+
+#: .\users\templates\users\friends_base.html:17
+#: .\users\templates\users\friends_outcoming.html:7
+msgid "исходящие заявки"
+msgstr ""
+
+#: .\users\templates\users\friends_friends.html:25
+#: .\users\templates\users\profile.html:23
+msgid "удалить из друзей"
+msgstr ""
+
+#: .\users\templates\users\friends_friends.html:29
+#: .\users\templates\users\profile.html:37
+msgid "написать сообщение"
+msgstr ""
+
+#: .\users\templates\users\friends_incoming.html:25
+msgid "подтвердить"
+msgstr ""
+
+#: .\users\templates\users\friends_incoming.html:33
+msgid "отклонить"
+msgstr ""
+
+#: .\users\templates\users\friends_outcoming.html:25
+msgid "отменить"
+msgstr ""
+
+#: .\users\templates\users\profile.html:14
+msgid "настройки"
+msgstr ""
+
+#: .\users\templates\users\profile.html:32
+msgid "добавить в друзья"
+msgstr ""
+
+#: .\users\templates\users\profile.html:92
+msgid "опубликовать"
+msgstr ""
+
+#: .\users\templates\users\search.html:30
+msgid "год рождения"
+msgstr ""
+
+#: .\users\templates\users\search.html:77
+msgid "искать"
+msgstr ""
+
+#: .\users\templates\users\search.html:94
+#, python-format
+msgid "%(age)s лет"
+msgstr ""
+
+#: .\users\templates\users\settings.html:17
+msgid "удалить"
+msgstr ""
+
+#: .\users\templates\users\settings.html:21
+msgid "У вас еще нету аватарки :("
+msgstr ""
+
+#: .\users\templates\users\settings.html:57
+msgid "изменение пароля"
+msgstr ""
+
+#: .\users\templates\users\settings.html:73
+msgid "изменить пароль"
+msgstr ""
+
+#: .\users\templates\users\settings.html:87
+msgid "изменение email"
+msgstr ""
+
+#: .\users\templates\users\settings.html:92
+msgid "текущий email"
+msgstr ""
+
+#: .\users\templates\users\settings.html:111
+msgid "изменить email"
+msgstr ""
+
+#: .\users\views.py:56
+msgid "Сообщение успешно опубликовано."
+msgstr ""
+
+#: .\users\views.py:88
+msgid "Профиль успешно сохранен."
+msgstr ""
+
+#: .\users\views.py:94
+msgid "Пароль успешно изменен."
+msgstr ""
+
+#: .\users\views.py:98
+msgid "Email успешно изменен."
+msgstr ""
+
+#: .\users\views.py:194
+msgid "Заявка успешно отправлена и ожидает рассмотрения."
+msgstr ""
+
+#: .\users\views.py:196
+msgid "Пользователь успешно добавлен в друзья."
+msgstr ""
+
+#: .\users\views.py:204
+msgid "Пользователь успешно удален из друзей."
+msgstr ""
+
+#: .\users\views.py:216
+msgid "Заявка успешно подтверждена. Пользователь добавлен в друзья."
+msgstr ""
+
+#: .\users\views.py:223
+msgid "Заявка успешно отклонена."
+msgstr ""
+
+#: .\users\views.py:230
+msgid "Заявка успешно отменена."
+msgstr ""
